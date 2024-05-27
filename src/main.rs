@@ -23,7 +23,7 @@ async fn main() -> io::Result<()> {
         .merge(Redoc::with_url("/redoc", docs::ApiDoc::openapi()))
         .merge(RapiDoc::new("/api-docs/openapi.json").path("/docs"));
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3001").await?;
     println!("Listening on {}", listener.local_addr()?);
     axum::serve(listener, app).await
 }
