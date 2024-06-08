@@ -12,15 +12,13 @@ use axum::{routing::get, Json, Router};
         (status = 200, description = "Pong", body = MessageResponse),
         (status = 500, description = "Server error"),
     ),
-    security(
-        ("api_key" = [])
-    ),
     tag = "Misc"
 )]
 async fn get_ping() -> Response {
     let response = MessageResponse {
         message: "Pong".to_string(),
     };
+    println!("Request received: PING");
     Json(response).into_response()
 }
 
